@@ -20,7 +20,7 @@ int main()
 	}
 }
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 //Count the number of trailing zeros
 //Naive approach would be to calculate the factorial and then iterate through the number tilll factorial %2==0
 //Time complexity would be O(n)
@@ -39,4 +39,32 @@ int main() {
 
 	}
 	cout << total5;
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+//GCD
+//Naive Solution : take min(a,b) and iterate towards 0
+//as soon find the number dividing both its gcd : Time complexity O(min(a,b))
+//Efficient Solution:
+
+//Euclidean Algorithms
+//Let b be smaller than a
+//then gcd(a,b)= gcd(a-b,b)
+//Why? Let 'g' be GCD of 'a' and 'b'
+//a=gx,b=gy and GCD(x,y)=1
+//(a-b)=g(x-y)
+#include<iostream>
+using namespace std;
+int gcd(int a, int b) {
+	while (a != b) {
+		if (a > b) {a = a - b;}
+		else {b = b - a;}
+	}
+	return a;
+}
+int main() {
+	cout << gcd(12, 24);
+
+
 }
