@@ -63,8 +63,49 @@ int gcd(int a, int b) {
 	}
 	return a;
 }
+
+//Optimized version of Euclidean algorithm
+int gcdOptimized(int a, int b) {
+	if (b == 0) {
+		return a;
+	}
+	return gcdOptimized(b, a % b);
+}
 int main() {
-	cout << gcd(12, 24);
+	cout << gcdOptimized(12, 24);
+}
 
+----------------------------------------------------------------------------------------------------------------
+//Prime check 
+//Iterate till sqrt(n) cause divisors of numbers are in pairs Efficiency O(sqrt(n))
+#include<iostream>
+#include<cmath>
+using namespace std;
+bool isPrime(int n) {
+	if (n == 1) {return false;}
+	for (int i = 2; i <= sqrt(n); i++) {
+		if (n % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+int main() {
+	int n;
+	cin >> n;
+	if (isPrime(n)) {cout << "Prime";}
+	else {cout << "Not Prime";}
 
+}
+//More Optimized solution
+//First check for multiple of 2 or 3 it reduces a lot of iterations, reduces iterations to 1/3rd alsmost
+bool isPrimeOptimized(int n){
+	if(n==1){return false;}
+	if(n==2||n==3){return true;}
+	if(n%2==0||n%3==0){return false;}
+	for(int i=5;i<=sqrt(n);i=i+6){
+		if (n%i==0||n%(i+2)==0){return false;}
+
+	}
+	return true;
 }
